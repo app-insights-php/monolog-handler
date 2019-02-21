@@ -1,0 +1,33 @@
+{
+    "name": "app-insights-php/monolog-handler",
+    "description": "Microsoft App Insights monolog handler",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Norbert Orzechowicz",
+            "email": "norbert@orzechowicz.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require": {
+        "monolog/monolog": "^1.0",
+        "app-insights-php/client": "dev-master"
+    },
+    "minimum-stability": "dev"
+}
