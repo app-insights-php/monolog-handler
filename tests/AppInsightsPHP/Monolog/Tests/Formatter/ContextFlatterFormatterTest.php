@@ -51,16 +51,11 @@ final class ContextFlatterFormatterTest extends TestCase
         $formatted = $formatter->format([
             'context' => [
                 'string' => 'string',
-                'assoc_array' => [
-                    'exception' => new \Exception('Exception message', 200, new \RuntimeException('Runtime'))
-                ],
                 'datetime' => new \DateTimeImmutable()
             ]
         ]);
 
         $this->assertEquals('string', $formatted['context']['string']);
-        $this->assertEquals('Exception message', $formatted['context']['assoc_array.exception.message']);
-        $this->assertEquals(200, $formatted['context']['assoc_array.exception.code']);
         $this->assertStringStartsWith('[object] (DateTimeImmutable:', $formatted['context']['datetime']);
     }
 }
