@@ -21,13 +21,12 @@
     },
     "require": {
         "monolog/monolog": "^1.1",
-        "app-insights-php/client": "dev-master"
+        "app-insights-php/client": "^0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.1"
     },
     "scripts": {
         "test": "phpunit"
-    },
-    "minimum-stability": "dev"
+    }
 }
