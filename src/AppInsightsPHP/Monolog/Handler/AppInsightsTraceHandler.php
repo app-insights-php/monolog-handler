@@ -54,7 +54,7 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
             array_merge(
                 [
                     'channel' => $record['channel'],
-                    'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format(\DateTimeInterface::ATOM) : $record['datetime'],
+                    'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format('c') : $record['datetime'],
                     'monolog_level' => $record['level_name'],
                 ],
                 $formattedRecord['context']

@@ -26,7 +26,7 @@ final class AppInsightsTraceHandlerTest extends TestCase
                 Message_Severity_Level::INFORMATION,
                 [
                     'channel' => 'test',
-                    'datetime' => $logDate->format(\DateTimeInterface::ATOM),
+                    'datetime' => $logDate->format('c'),
                     'monolog_level' => 'DEBUG',
                     'foo' => 'bar'
                 ]
