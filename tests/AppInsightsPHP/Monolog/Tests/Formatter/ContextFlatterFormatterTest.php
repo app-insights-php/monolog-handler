@@ -58,4 +58,19 @@ final class ContextFlatterFormatterTest extends TestCase
         $this->assertEquals('string', $formatted['context']['string']);
         $this->assertStringStartsWith('[object] (DateTimeImmutable:', $formatted['context']['datetime']);
     }
+
+    public function test_formatting_multidimensional_array_context_with_mixed_values_with_prefix()
+    {
+        $formatter = new ContextFlatterFormatter('param_');
+
+        $formatted = $formatter->format([
+            'context' => [
+                'string' => 'string',
+                'datetime' => new \DateTimeImmutable()
+            ]
+        ]);
+
+        $this->assertEquals('string', $formatted['context']['param_string']);
+        $this->assertStringStartsWith('[object] (DateTimeImmutable:', $formatted['context']['param_datetime']);
+    }
 }

@@ -8,6 +8,14 @@ use Monolog\Formatter\NormalizerFormatter;
 
 final class ContextFlatterFormatter extends NormalizerFormatter
 {
+    private $prefix;
+
+    public function __construct(string $prefix = '', ?string $dateFormat = null)
+    {
+        parent::__construct($dateFormat);
+        $this->prefix = $prefix;
+    }
+
     public function format(array $record)
     {
         if (!\array_key_exists('context', $record) || !\is_array($record['context'])) {
@@ -42,7 +50,7 @@ final class ContextFlatterFormatter extends NormalizerFormatter
                 if (\is_array($normalized)) {
                     $result = $result + $this->flatterArray($normalized, $prefix . $key . '.');
                 } else {
-                    $result[$prefix.$key] = $normalized;
+                    $result[$this->prefix . $prefix.$key] = $normalized;
                 }
             }
         }

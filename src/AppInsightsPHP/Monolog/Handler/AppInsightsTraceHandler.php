@@ -48,7 +48,18 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
 
         $formattedRecord = $this->formatter->format($record);
 
-        $this->telemetryClient->trackMessage($formattedRecord["message"], $level, $formattedRecord['context']);
+        $this->telemetryClient->trackMessage(
+            $formattedRecord["message"],
+            $level,
+            array_merge(
+                [
+                    'channel' => $record['channel'],
+                    'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format('c') : $record['datetime'],
+                    'monolog_level' => $record['level_name'],
+                ],
+                $formattedRecord['context']
+            )
+        );
     }
 
     protected function getDefaultFormatter()
