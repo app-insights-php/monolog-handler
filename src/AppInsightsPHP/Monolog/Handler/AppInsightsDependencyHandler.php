@@ -32,7 +32,7 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
             $record['message'],
             null,
             null,
-            \in_array($record['level'], [Logger::CRITICAL, Logger::ERROR, Logger::EMERGENCY]) ? false : true,
+            $record['level'] >= Logger::ERROR ? false : true,
             null,
             array_merge(
                 [
