@@ -62,6 +62,12 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
         );
     }
 
+    public function handleBatch(array $records)
+    {
+        parent::handleBatch($records);
+        $this->reset();
+    }
+
     protected function getDefaultFormatter()
     {
         return new ContextFlatterFormatter();
@@ -74,6 +80,6 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
 
     public function close()
     {
-        return $this->reset();
+        $this->reset();
     }
 }
