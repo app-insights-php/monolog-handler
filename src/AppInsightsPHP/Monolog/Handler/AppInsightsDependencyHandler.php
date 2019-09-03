@@ -5,6 +5,7 @@ declare (strict_types=1);
 namespace AppInsightsPHP\Monolog\Handler;
 
 use AppInsightsPHP\Client\Client;
+use AppInsightsPHP\Client\TelemetryData;
 use AppInsightsPHP\Monolog\Formatter\ContextFlatterFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
@@ -25,22 +26,30 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
     protected function write(array $record)
     {
         $formattedRecord = $this->formatter->format($record);
+        $name = $formattedRecord["channel"];
+        $type = 'Monolog Dependency Handler';
+        $command = $record['message'];
+        $properties = \array_merge(
+            [
+                'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format('c') : $record['datetime'],
+                'monolog_level' => $record['level_name'],
+            ],
+            $formattedRecord['context']
+        );
+
+        if (TelemetryData::dependency($name, $type, $command, $properties)->exceededMaximumSize()) {
+            return;
+        };
 
         $this->telemetryClient->trackDependency(
-            $formattedRecord["channel"],
-            'Monolog Dependency Handler',
-            $record['message'],
+            $name,
+            $type,
+            $command,
             null,
-            null,
+            0,
             $record['level'] >= Logger::ERROR ? false : true,
             null,
-            array_merge(
-                [
-                    'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format('c') : $record['datetime'],
-                    'monolog_level' => $record['level_name'],
-                ],
-                $formattedRecord['context']
-            )
+            $properties
         );
     }
 

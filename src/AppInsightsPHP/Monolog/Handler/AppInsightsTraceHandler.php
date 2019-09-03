@@ -5,6 +5,7 @@ declare (strict_types=1);
 namespace AppInsightsPHP\Monolog\Handler;
 
 use AppInsightsPHP\Client\Client;
+use AppInsightsPHP\Client\TelemetryData;
 use AppInsightsPHP\Monolog\Formatter\ContextFlatterFormatter;
 use ApplicationInsights\Channel\Contracts\Message_Severity_Level;
 use Monolog\Handler\AbstractProcessingHandler;
@@ -47,19 +48,21 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
         }
 
         $formattedRecord = $this->formatter->format($record);
-
-        $this->telemetryClient->trackMessage(
-            $formattedRecord["message"],
-            $level,
-            array_merge(
-                [
-                    'channel' => $record['channel'],
-                    'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format('c') : $record['datetime'],
-                    'monolog_level' => $record['level_name'],
-                ],
-                $formattedRecord['context']
-            )
+        $message = $formattedRecord["message"];
+        $properties = array_merge(
+            [
+                'channel' => $record['channel'],
+                'datetime' => ($record['datetime'] instanceof \DateTimeInterface) ? $record['datetime']->format('c') : $record['datetime'],
+                'monolog_level' => $record['level_name'],
+            ],
+            $formattedRecord['context']
         );
+
+        if (TelemetryData::message($message,$properties)->exceededMaximumSize()) {
+            return;
+        };
+
+        $this->telemetryClient->trackMessage($message, $level, $properties);
     }
 
     public function handleBatch(array $records)

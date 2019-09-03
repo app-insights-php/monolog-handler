@@ -6,11 +6,15 @@ namespace AppInsightsPHP\Monolog\Tests\Formatter;
 
 use AppInsightsPHP\Client\Client;
 use AppInsightsPHP\Client\Configuration;
+use AppInsightsPHP\Client\FailureCache;
 use AppInsightsPHP\Monolog\Handler\AppInsightsDependencyHandler;
+use ApplicationInsights\Channel\Telemetry_Channel;
 use ApplicationInsights\Telemetry_Client;
 use Monolog\Logger;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
+use Psr\SimpleCache\CacheInterface;
 
 final class AppInsightsDependencyHandlerTest extends TestCase
 {
@@ -21,23 +25,37 @@ final class AppInsightsDependencyHandlerTest extends TestCase
         $channel = 'channel_name';
         $context = ['foo' => 'bar'];
 
-        $telemetry = $this->createMock(Telemetry_Client::class);
+        $telemetry = $this->createTelemetryClientMock();
         $this->expectsMessageToBeTracked($telemetry, $logDate, $message, $channel, $context);
 
-        $handler = new AppInsightsDependencyHandler(new Client($telemetry, Configuration::createDefault()));
+        $handler = new AppInsightsDependencyHandler(
+            new Client(
+                $telemetry,
+                Configuration::createDefault(),
+                new FailureCache($this->createMock(CacheInterface::class)),
+                new NullLogger()
+            )
+        );
 
         $handler->handle($this->getRecord($logDate, Logger::DEBUG, $message, $channel, $context));
     }
 
     public function test_sent_message_to_app_insights_after_batch_processing(): void
     {
-        $telemetry = $this->createMock(Telemetry_Client::class);
+        $telemetry = $this->createTelemetryClientMock();
         $this->expectsMessageToBeTracked($telemetry, $logDate = new \DateTimeImmutable('2019-01-01 10:00:00'));
 
         // two times, because the first time is after batc processing and the second time in the object destructor
         $telemetry->expects($this->exactly(2))->method('flush');
 
-        $handler = new AppInsightsDependencyHandler(new Client($telemetry, Configuration::createDefault()));
+        $handler = new AppInsightsDependencyHandler(
+            new Client(
+                $telemetry,
+                Configuration::createDefault(),
+                new FailureCache($this->createMock(CacheInterface::class)),
+                new NullLogger()
+            )
+        );
 
         $handler->handleBatch([$this->getRecord($logDate, Logger::DEBUG)]);
     }
@@ -76,5 +94,17 @@ final class AppInsightsDependencyHandlerTest extends TestCase
                 )
             )
         ;
+    }
+
+    private function createTelemetryClientMock(): MockObject
+    {
+        $telemetryClientMock = $this->createMock(Telemetry_Client::class);
+        $telemetryClientMock->method('getChannel')->willReturn(
+            $telemetryChannelMock = $this->createMock(Telemetry_Channel::class)
+        );
+        $telemetryChannelMock->method('getQueue')->willReturn([]);
+        $telemetryChannelMock->method('getSerializedQueue')->willReturn(json_encode([]));
+
+        return $telemetryClientMock;
     }
 }
