@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "monolog/monolog": "^1.1",
+        "monolog/monolog": "^1.1 || ^2.0",
         "app-insights-php/client": "^0.2.3"
     },
     "require-dev": {
