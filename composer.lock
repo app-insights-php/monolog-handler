@@ -8,37 +8,33 @@
     "packages": [
         {
             "name": "app-insights-php/client",
-            "version": "0.2.5",
+            "version": "0.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/app-insights-php/client.git",
-                "reference": "736e36dff00be9cffe44ab6a4fdc9e9c0f6f16da"
+                "reference": "2599acfc98754350716aea124e1050df8880f5b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/app-insights-php/client/zipball/736e36dff00be9cffe44ab6a4fdc9e9c0f6f16da",
-                "reference": "736e36dff00be9cffe44ab6a4fdc9e9c0f6f16da",
+                "url": "https://api.github.com/repos/app-insights-php/client/zipball/2599acfc98754350716aea124e1050df8880f5b6",
+                "reference": "2599acfc98754350716aea124e1050df8880f5b6",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0",
                 "microsoft/application-insights": "^0.4.5",
-                "php": "^7.1",
+                "php": "^7.3 || ^8.0",
                 "psr/log": "^1.1",
                 "psr/simple-cache": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.0 || ^8.0"
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpunit/phpunit": "^8.5 || ^9.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "": "src/"
+                    "AppInsightsPHP\\Client\\": "src/AppInsightsPHP/Client/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -54,9 +50,15 @@
             "description": "Microsoft App Insights telemetry client php wrapper",
             "support": {
                 "issues": "https://github.com/app-insights-php/client/issues",
-                "source": "https://github.com/app-insights-php/client/tree/master"
+                "source": "https://github.com/app-insights-php/client/tree/0.2.6"
             },
-            "time": "2020-01-23T11:55:36+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/norberttech",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-02-13T16:32:42+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
