@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace AppInsightsPHP\Monolog\Handler;
 
@@ -23,10 +23,26 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
         $this->telemetryClient = $telemetryClient;
     }
 
-    protected function write(array $record)
+    public function handleBatch(array $records) : void
+    {
+        parent::handleBatch($records);
+        $this->reset();
+    }
+
+    public function reset() : void
+    {
+        $this->telemetryClient->flush();
+    }
+
+    public function close() : void
+    {
+        $this->reset();
+    }
+
+    protected function write(array $record) : void
     {
         $formattedRecord = $this->formatter->format($record);
-        $name = $formattedRecord["channel"];
+        $name = $formattedRecord['channel'];
         $type = 'Monolog Dependency Handler';
         $command = $record['message'];
         $properties = \array_merge(
@@ -39,7 +55,7 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
 
         if (TelemetryData::dependency($name, $type, $command, $properties)->exceededMaximumSize()) {
             return;
-        };
+        }
 
         $this->telemetryClient->trackDependency(
             $name,
@@ -53,24 +69,8 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
         );
     }
 
-    public function handleBatch(array $records)
-    {
-        parent::handleBatch($records);
-        $this->reset();
-    }
-
     protected function getDefaultFormatter()
     {
         return new ContextFlatterFormatter();
-    }
-
-    public function reset()
-    {
-        $this->telemetryClient->flush();
-    }
-
-    public function close()
-    {
-        $this->reset();
     }
 }

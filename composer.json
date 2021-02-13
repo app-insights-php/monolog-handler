@@ -11,12 +11,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "AppInsightsPHP\\Monolog\\": "src/AppInsightsPHP/Monolog/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "": "tests"
+            "AppInsightsPHP\\Monolog\\Tests\\": "tests/AppInsightsPHP/Monolog/Tests/"
         }
     },
     "require": {
@@ -24,14 +24,21 @@
         "app-insights-php/client": "^0.2.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.1 || ^8.0"
+        "phpunit/phpunit": "^8.5",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "scripts": {
-        "test": "phpunit"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.2.x-dev"
-        }
+        "phpunit": [
+            "phpunit --colors=always"
+        ],
+        "static:analyze": [
+            "php-cs-fixer fix --dry-run"
+        ],
+        "test" : [
+            "@phpunit"
+        ],
+        "cs:php:fix": [
+            "php-cs-fixer fix"
+        ]
     }
 }

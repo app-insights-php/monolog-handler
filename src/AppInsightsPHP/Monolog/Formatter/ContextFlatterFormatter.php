@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace AppInsightsPHP\Monolog\Formatter;
 
@@ -41,8 +41,8 @@ final class ContextFlatterFormatter extends NormalizerFormatter
     {
         $result = [];
 
-        foreach($array as $key => $value) {
-            if (is_array($value)) {
+        foreach ($array as $key => $value) {
+            if (\is_array($value)) {
                 $result = $result + $this->flatterArray($value, $prefix . $key . '.');
             } else {
                 $normalized = $this->normalize($value);
@@ -50,7 +50,7 @@ final class ContextFlatterFormatter extends NormalizerFormatter
                 if (\is_array($normalized)) {
                     $result = $result + $this->flatterArray($normalized, $prefix . $key . '.');
                 } else {
-                    $result[$this->prefix . $prefix.$key] = $normalized;
+                    $result[$this->prefix . $prefix . $key] = $normalized;
                 }
             }
         }
