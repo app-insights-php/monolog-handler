@@ -1,3 +1,8 @@
+## [Unreleased] - 2021-02-13
+
+### Added
+- [277837](https://github.com/app-insights-php/monolog-handler/commit/277837cc3a2b9c3fe0302f5a260958c1b5f60fa2) - **aeon-php/automation, cs fixer and php 8.0** - [@norberttech](https://github.com/norberttech)
+
 ## [0.2.1] - 2019-09-03
 
 ### Changed
