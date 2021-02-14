@@ -35,18 +35,9 @@ jobs:
         uses: "shivammathur/setup-php@v2"
         with:
           coverage: pcov
-          tools: phive, composer:v2
+          tools: composer:v2
           php-version: "${{ matrix.php-version }}"
           ini-values: memory_limit=-1
-
-      - name: "Cache Phive dependencies"
-        uses: "actions/cache@v2"
-        with:
-          path: |
-            ~/.phive
-          key: "${{ runner.os }}-phive-${{ hashFiles('**/phars.xml') }}"
-          restore-keys: |
-            ${{ runner.os }}-phive-
 
       - name: "Get Composer Cache Directory"
         id: composer-cache
@@ -58,7 +49,6 @@ jobs:
         with:
           path: |
             ${{ steps.composer-cache.outputs.dir }}
-            ~/.phive
           key: "php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-${{ hashFiles('**/composer.lock') }}"
           restore-keys: |
             php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
@@ -74,9 +64,6 @@ jobs:
       - name: "Install locked dependencies"
         if: ${{ matrix.dependencies == 'locked' }}
         run: "composer install --no-interaction --no-progress --no-suggest"
-
-      - name: "Install tools"
-        run: "phive install --trust-gpg-keys E82B2FB314E9906E,4AA394086372C20A --force-accept-unsigned"
 
       - name: "Test"
         run: "composer test"
