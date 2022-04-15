@@ -1,3 +1,8 @@
+## [Unreleased] - 2022-04-15
+
+### Changed
+- [#54](https://github.com/app-insights-php/monolog-handler/pull/54) - **Updated project to php 8.1** - [@norberttech](https://github.com/norberttech)
+
 ## [0.2.2] - 2021-02-14
 
 ### Added
