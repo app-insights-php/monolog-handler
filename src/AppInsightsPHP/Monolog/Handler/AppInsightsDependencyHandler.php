@@ -7,6 +7,7 @@ namespace AppInsightsPHP\Monolog\Handler;
 use AppInsightsPHP\Client\Client;
 use AppInsightsPHP\Client\TelemetryData;
 use AppInsightsPHP\Monolog\Formatter\ContextFlatterFormatter;
+use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 
@@ -69,7 +70,7 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
         );
     }
 
-    protected function getDefaultFormatter()
+    protected function getDefaultFormatter() : FormatterInterface
     {
         return new ContextFlatterFormatter();
     }

@@ -8,6 +8,7 @@ use AppInsightsPHP\Client\Client;
 use AppInsightsPHP\Client\TelemetryData;
 use AppInsightsPHP\Monolog\Formatter\ContextFlatterFormatter;
 use ApplicationInsights\Channel\Contracts\Message_Severity_Level;
+use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 
@@ -86,7 +87,7 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
         $this->telemetryClient->trackMessage($message, $level, $properties);
     }
 
-    protected function getDefaultFormatter()
+    protected function getDefaultFormatter() : FormatterInterface
     {
         return new ContextFlatterFormatter();
     }
