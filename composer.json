@@ -20,11 +20,11 @@
         }
     },
     "require": {
-        "monolog/monolog": "^1.1",
+        "monolog/monolog": "^1.1 || ^2.0",
         "app-insights-php/client": "^0.2.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5 || ^9.0",
+        "phpunit/phpunit": "^9.5",
         "friendsofphp/php-cs-fixer": "^2.16"
     },
     "scripts": {
