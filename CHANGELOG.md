@@ -1,4 +1,4 @@
-## [Unreleased] - 2023-03-28
+## [0.3.0] - 2023-03-28
 
 ### Added
 - [#79](https://github.com/app-insights-php/monolog-handler/pull/79) - **documentation for integration with laravel framework** - [@drmmr763](https://github.com/drmmr763)
