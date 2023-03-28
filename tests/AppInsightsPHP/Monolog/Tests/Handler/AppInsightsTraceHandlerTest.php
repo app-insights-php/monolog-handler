@@ -11,9 +11,12 @@ use AppInsightsPHP\Monolog\Handler\AppInsightsTraceHandler;
 use ApplicationInsights\Channel\Contracts\Message_Severity_Level;
 use ApplicationInsights\Channel\Telemetry_Channel;
 use ApplicationInsights\Telemetry_Client;
+use Monolog\Level;
 use Monolog\Logger;
+use Monolog\LogRecord;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LogLevel;
 use Psr\Log\NullLogger;
 use Psr\SimpleCache\CacheInterface;
 

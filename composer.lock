@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b05149a0408465a6ff4a3ccfabc9c116",
+    "content-hash": "3f73c9f3bf720d9d0587a00c48c98301",
     "packages": [
         {
             "name": "app-insights-php/application-insights",
-            "version": "0.4.8",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/app-insights-php/applicationInsights-php.git",
-                "reference": "56762295145d6aecab2e2e68bb20dee0c3150843"
+                "reference": "0d7d59c834f1de778d609145ec0334a0d8182fd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/app-insights-php/applicationInsights-php/zipball/56762295145d6aecab2e2e68bb20dee0c3150843",
-                "reference": "56762295145d6aecab2e2e68bb20dee0c3150843",
+                "url": "https://api.github.com/repos/app-insights-php/applicationInsights-php/zipball/0d7d59c834f1de778d609145ec0334a0d8182fd7",
+                "reference": "0d7d59c834f1de778d609145ec0334a0d8182fd7",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.4",
-                "php": "^7.4.0 || ~8.0 || ~8.1"
+                "php": "~8.1 || ~8.2"
             },
             "type": "library",
             "autoload": {
@@ -44,28 +44,28 @@
                 "telemetry"
             ],
             "support": {
-                "source": "https://github.com/app-insights-php/applicationInsights-php/tree/0.4.8"
+                "source": "https://github.com/app-insights-php/applicationInsights-php/tree/0.5.0"
             },
-            "time": "2022-08-09T17:41:54+00:00"
+            "time": "2023-03-28T10:19:59+00:00"
         },
         {
             "name": "app-insights-php/client",
-            "version": "0.2.12",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/app-insights-php/client.git",
-                "reference": "bfb9f84230ebdc38f59b60acd7b36b706172aa72"
+                "reference": "9f2cbc580cd177e591be2309071500436344e066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/app-insights-php/client/zipball/bfb9f84230ebdc38f59b60acd7b36b706172aa72",
-                "reference": "bfb9f84230ebdc38f59b60acd7b36b706172aa72",
+                "url": "https://api.github.com/repos/app-insights-php/client/zipball/9f2cbc580cd177e591be2309071500436344e066",
+                "reference": "9f2cbc580cd177e591be2309071500436344e066",
                 "shasum": ""
             },
             "require": {
-                "app-insights-php/application-insights": "^0.4.8",
+                "app-insights-php/application-insights": "^0.5",
                 "guzzlehttp/guzzle": "^7.4",
-                "php": "^7.4 || ^8.0",
+                "php": "~8.1 || ~8.2",
                 "psr/log": "^1.1 || ^2.0 || ^3.0",
                 "psr/simple-cache": "^1.0"
             },
@@ -92,7 +92,7 @@
             "description": "Microsoft App Insights telemetry client php wrapper",
             "support": {
                 "issues": "https://github.com/app-insights-php/client/issues",
-                "source": "https://github.com/app-insights-php/client/tree/0.2.12"
+                "source": "https://github.com/app-insights-php/client/tree/0.3.0"
             },
             "funding": [
                 {
@@ -100,7 +100,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-21T09:04:34+00:00"
+            "time": "2023-03-28T10:26:40+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
