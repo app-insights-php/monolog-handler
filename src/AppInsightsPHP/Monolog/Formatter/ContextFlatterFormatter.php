@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace AppInsightsPHP\Monolog\Formatter;
 
 use Monolog\Formatter\NormalizerFormatter;
-use Monolog\LogRecord;
 
 final class ContextFlatterFormatter extends NormalizerFormatter
 {
