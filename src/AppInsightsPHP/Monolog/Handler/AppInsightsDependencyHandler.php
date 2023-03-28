@@ -40,7 +40,7 @@ final class AppInsightsDependencyHandler extends AbstractProcessingHandler
         $this->reset();
     }
 
-    protected function write(array $record) : void
+    protected function write($record) : void
     {
         $formattedRecord = $this->formatter->format($record);
         $name = $formattedRecord['channel'];

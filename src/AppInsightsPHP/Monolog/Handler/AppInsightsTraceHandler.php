@@ -41,7 +41,7 @@ final class AppInsightsTraceHandler extends AbstractProcessingHandler
         $this->reset();
     }
 
-    protected function write(array $record) : void
+    protected function write($record) : void
     {
         switch ($record['level']) {
             case Logger::DEBUG:

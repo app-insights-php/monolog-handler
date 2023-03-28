@@ -16,7 +16,7 @@ final class ContextFlatterFormatter extends NormalizerFormatter
         $this->prefix = $prefix;
     }
 
-    public function format(array $record)
+    public function format($record)
     {
         if (!\array_key_exists('context', $record) || !\is_array($record['context'])) {
             return $record;
