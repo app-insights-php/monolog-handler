@@ -1,3 +1,8 @@
+## [Unreleased] - 2023-03-28
+
+### Updated
+- [2f466f](https://github.com/app-insights-php/monolog-handler/commit/2f466f4b285b25ba82a39a9b84defc63ff9c7a75) - **dependencies** - [@norberttech](https://github.com/norberttech)
+
 ## [0.3.0] - 2023-03-28
 
 ### Added
