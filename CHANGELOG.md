@@ -1,7 +1,10 @@
-## [Unreleased] - 2023-01-18
+## [Unreleased] - 2023-03-28
 
 ### Added
 - [#79](https://github.com/app-insights-php/monolog-handler/pull/79) - **documentation for integration with laravel framework** - [@drmmr763](https://github.com/drmmr763)
+
+### Updated
+- [c94b55](https://github.com/app-insights-php/monolog-handler/commit/c94b554d6910217b109618c4f4076a49dbefb7ea) - **php to version ~8.1||~8.2** - [@norberttech](https://github.com/norberttech)
 
 ## [0.2.3] - 2022-08-09
 
