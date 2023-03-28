@@ -3,6 +3,9 @@
 ### Changed
 - [3d2a2e](https://github.com/app-insights-php/monolog-handler/commit/3d2a2e129719c80cb85200fdd19f845996df967d) - **CS fixes** - [@norberttech](https://github.com/norberttech)
 
+### Updated
+- [9202a2](https://github.com/app-insights-php/monolog-handler/commit/9202a2c07fa0cecc3d542c051508ccf0238d162a) - **dev dependencies** - [@norberttech](https://github.com/norberttech)
+
 ## [0.3.1] - 2023-03-28
 
 ### Updated
