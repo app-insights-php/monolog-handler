@@ -1,9 +1,10 @@
-## [Unreleased] - 2023-03-28
+## [Unreleased] - 2023-03-29
 
 ### Changed
 - [3d2a2e](https://github.com/app-insights-php/monolog-handler/commit/3d2a2e129719c80cb85200fdd19f845996df967d) - **CS fixes** - [@norberttech](https://github.com/norberttech)
 
 ### Updated
+- [89ef1b](https://github.com/app-insights-php/monolog-handler/commit/89ef1b61f6f23131655beae25100a1e4e060d9ca) - **tests.yml** - [@norberttech](https://github.com/norberttech)
 - [9202a2](https://github.com/app-insights-php/monolog-handler/commit/9202a2c07fa0cecc3d542c051508ccf0238d162a) - **dev dependencies** - [@norberttech](https://github.com/norberttech)
 
 ## [0.3.1] - 2023-03-28
