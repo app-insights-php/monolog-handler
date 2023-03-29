@@ -2,6 +2,8 @@
 
 It provides to monolog handlers for AppInsights: for tracking dependency (AppInsightsDependencyHandler) and traces (AppInsightsTraceHandler).
 
+[![Tests](https://github.com/app-insights-php/monolog-handler/actions/workflows/tests.yml/badge.svg?branch=1.x)](https://github.com/app-insights-php/monolog-handler/actions/workflows/tests.yml)
+
 ### Long running processes
 
 It might be tricky to find a proper moment to flush everything to AppInsights for long running processes (e.g: consumers). 
